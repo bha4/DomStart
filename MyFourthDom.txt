@@ -1,0 +1,33 @@
+// querySelector & querySelectorAll Methods:
+
+let Selector = document.querySelector("#main-heading");
+Selector.style.textAllign= "right";
+
+let main = document.querySelector("#basket-heading");
+main.style.color= "brown";
+main.style.marginLeft ='30px';
+
+let fruit = document.querySelector(".fruits");
+fruit.style.backgroundColor ="gray";
+fruit.style.padding="30px";
+fruit.style.margin ="30px";
+fruit.style.width ="50px";
+fruit.style.borderRadius="5px";
+fruit.style.listStyleType="none";
+
+
+let fruits = document.querySelectorAll(".fruit");
+for(let i=0;i<fruits.length;i++){
+  
+    fruits[i].style.backgroundColor ="lightgray";
+    fruits[i].style.padding="10px";
+    fruits[i].style.margin ="10px";
+    fruits[i].style.borderRadius="5px";
+  fruits[i].style.color ="black"
+}
+
+let Oddfruits = document.querySelectorAll(".fruit:nth-child(even)");
+for(let i=0;i<Oddfruits.length;i++){
+  Oddfruits[i].style.backgroundColor ="red";
+  Oddfruits[i].style.color ="white"
+}
