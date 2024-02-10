@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="margin: 0">
+    <form onsubmit="handleFormSubmit(event)">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" />
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" />
+      <label for="phone">Phone No</label>
+      <input type="tel" name="phone" id="phone" />
+      <button type="submit">Submit</button>
+    </form>
+    <!-- Add Unordered List Element Here -->
+      <ul id="userList"></ul>
+  </body>
+  <script >
+  
+function handleFormSubmit(event){
+  event.preventDefault()
+  const username = event.target.username.value;
+  const email = event.target.email.value;
+  const phone = event.target.phone.value;
+  let obj ={
+    username,
+    email,
+    phone
+  }
+  localStorage.setItem(obj.email,JSON.stringify(obj))
+  show(obj)
+}
+function show(obj){
+  let parent = document.getElementById("list")
+  let child = document.createElement("li")
+  
+  child.textContent =`${obj.username} ${obj.email} ${obj.phone}  `
+  let btn = document.createElement("button");
+  btn.type="button";
+  btn.value = "Delete";
+  btn.onclick=function(){
+   localStorage.removeItem(obj.email);
+   parent.removeChild(child); 
+  }
+  let btn1 = document.createElement("button");
+  btn1.type="button";
+  btn1.value = "Edit";
+  btn1.onclick=function(){
+   localStorage.removeItem(obj.email);
+   parent.removeChild(child);
+    document.getElementById("username").value =obj.username
+    document.getElementById("email").value =obj.email;
+    document.getElementById("phone").value =obj.phone;
+  }
+  child.appendChild(btn,btn1);
+  parent.appendChild(child)
+}
+</script> 
+</html>
